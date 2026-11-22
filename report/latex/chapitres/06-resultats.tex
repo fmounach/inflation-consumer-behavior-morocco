@@ -3,7 +3,7 @@
 La figure \ref{fig:historique} présente les 18 profils dans les deux périmètres. Les trajectoires utilisent les indices de prix observés du HCP et les coefficients fixes de l'ENNVM. Les variations diffèrent selon le périmètre et la composition des budgets. Entre septembre 2022 et octobre 2026, les hausses de coût sont comprises entre 8,97 et 9,45\,\% pour le périmètre prudent, et entre 7,60 et 8,34\,\% pour l'élargi. Pour l'ensemble national, les hausses sont de 9,22 et 7,85\,\%. Les contributions correspondantes au budget initial sont respectivement de 3,82 et 7,31 points. Le sous-panier prudent augmente davantage en proportion de son propre coût initial. Le périmètre élargi pèse davantage dans le budget total, ce qui conduit à une contribution supérieure.
 
 Les variations d'octobre 2026 sur un mois ou sur douze mois sont disponibles dans le CSV historique. Le tableau \ref{tab:historique} résume les 18 profils à cette date par rapport à la référence. Les trajectoires antérieures à septembre 2022 appliquent rétrospectivement les structures budgétaires de l'enquête.
-\figureprojet{04_cout_panier_historique.png}{Trajectoires du coût des sous-paniers à prix historiques. Base 100 en septembre 2022. Calculs à partir de l'IPC mensuel et de l'ENNVM.}{fig:historique}
+\figureprojet[1.10\linewidth]{04_cout_panier_historique.png}{Indices de coût par milieu et périmètre, de janvier 2017 à octobre 2026 (septembre 2022 = 100). C1 à C5 désignent les quintiles de dépenses de chaque milieu. Certaines courbes se superposent. Source : notebook 04, d'après le HCP \cite{hcpIndicateurs,hcpENNVM}.}{fig:historique}
 \clearpage
 \input{tableaux/historique}
 
@@ -14,7 +14,7 @@ Le coût du sous-panier augmente de 5\,\% dans les 36 couples profil--périmètr
 Le supplément du scénario combiné varie entre 215,65 et 403,30 MAD dans le périmètre prudent, et entre 352,90 et 509,30 MAD dans l'élargi. Pour l'ensemble national, le coût du sous-panier prudent augmente de 13,47\,\% (+278,85 MAD et +5,58 points du budget initial), contre 8,76\,\% dans l'élargi (+408,35 MAD et +8,17 points). L'ajout du choc alimentaire représente 175,35 MAD dans les deux périmètres de ce profil, car l'alimentation reçoit le même coefficient d'origine. Parmi les profils, les plus fortes charges alimentaires supplémentaires correspondent aux parts alimentaires initiales les plus élevées. Ainsi, C1 rural consacre 50,2\,\% de son budget au groupe 01, ce qui correspond à 263,55 MAD de supplément alimentaire marginal sur 5\,000 MAD.
 
 Les tableaux \ref{tab:chocs-prudent} et \ref{tab:chocs-elargi} présentent les montants et taux par profil. Les montants illustrent les dépenses supplémentaires nécessaires au maintien des quantités couvertes. Les dépenses réellement engagées dépendraient notamment des substitutions possibles, des prix effectivement rencontrés et des ressources du ménage.
-\figureprojet{04_chocs_hypothetiques.png}{Suppléments sur les postes couverts pour un budget initial hypothétique de 5\,000 MAD.}{fig:chocs}
+Les contributions au budget initial figurent en annexe~\ref{ann:chocs}. \figureprojet[1.10\linewidth]{04_chocs_hypothetiques.png}{Suppléments en MAD pour un budget initial hypothétique de 5\,000 MAD. Les barres distinguent la hausse uniforme et le supplément alimentaire. « Total » désigne l'ensemble du milieu. Source : notebook 04, pondérations ENNVM \cite{hcpENNVM}.}{fig:chocs}
 \clearpage
 \input{tableaux/chocs-prudent}
 \input{tableaux/chocs-elargi}

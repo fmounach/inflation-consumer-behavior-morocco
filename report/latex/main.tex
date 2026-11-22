@@ -36,16 +36,15 @@
 \makeatother
 
 \graphicspath{{figures/}}
-\newcommand{\nomEtudiant}{[Nom et prénom à compléter]}
-\newcommand{\nomEncadrant}{[Nom et prénom à compléter]}
-\newcommand{\anneeUniversitaire}{[Année universitaire à compléter]}
+\newcommand{\nomEtudiant}{Faouzi MOUNACH}
+\newcommand{\anneeUniversitaire}{2026--2027}
 \newcommand{\sourcetable}[1]{\par\smallskip{\footnotesize\emph{Source :} #1\par}}
-\newcommand{\figureprojet}[3]{%
+\newcommand{\figureprojet}[4][\linewidth]{%
   \begin{figure}[!htbp]
-  \centering\includegraphics[width=\linewidth,height=.70\textheight,keepaspectratio]{#1}
-  \caption{#2}\label{#3}
+  \centering\makebox[\linewidth][c]{\includegraphics[width=#1,height=.76\textheight,keepaspectratio]{#2}}
+  \caption{#3}\label{#4}
   \end{figure}}
-\hypersetup{pdftitle={Inflation \& Consumer Behavior Analysis - Morocco}}
+\hypersetup{pdfauthor={\nomEtudiant},pdftitle={Inflation \& Consumer Behavior Analysis - Morocco}}
 
 \begin{document}
 \hypersetup{pageanchor=false}

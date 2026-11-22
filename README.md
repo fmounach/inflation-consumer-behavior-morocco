@@ -12,16 +12,16 @@ Projet académique individuel de première année à l’INSEA, filière Économ
 
 ## Obtenir les fichiers de données
 
-Créer `data/raw/` à la racine et y déposer les classeurs HCP avec les noms suivants.
+Créer le dossier `data/raw/` à la racine du dépôt. Télécharger les quatre classeurs au format Excel (.xlsx) depuis les pages officielles ci-dessous, puis les enregistrer sous les noms exacts du tableau. Sur chaque page IPC, utiliser « Télécharger le fichier de données ». Sur la page ENNVM, utiliser « Télécharger Tabulation Rapport ENNVM 2022-2023 ».
 
 | Fichier attendu | Où l’obtenir |
 | --- | --- |
-| `IPC par grandes divisions - mensuel (Base 100 _ 2017).xlsx` | HCP, indicateurs IPC, grandes divisions, mensuel |
-| `IPC par divisions - mensuel (groupe 1) (Base 100 _ 2017).xlsx` | HCP, indicateurs IPC, divisions groupe 1, mensuel |
-| `IPC par divisions - mensuel (groupe 2) (Base 100 _ 2017).xlsx` | HCP, indicateurs IPC, divisions groupe 2, mensuel |
-| `Tabulation Rapport Enquête Nationale sur le Niveau de Vie des Ménages 2022-2023.xlsx` | Page du rapport ENNVM, rubrique « Télécharger Tabulation Rapport ENNVM 2022-2023 » |
+| `IPC par grandes divisions - mensuel (Base 100 _ 2017).xlsx` | [Grandes divisions, mensuel](https://www.hcp.ma/Indice-des-prix-a-la-consommation-IPC-2017-par-grandes-divisions-Mensuel_a2513.html) |
+| `IPC par divisions - mensuel (groupe 1) (Base 100 _ 2017).xlsx` | [Divisions, groupe 1, mensuel](https://www.hcp.ma/Indice-des-prix-a-la-consommation-IPC-2017-par-divisions-Groupe-1-Mensuel_a2514.html) |
+| `IPC par divisions - mensuel (groupe 2) (Base 100 _ 2017).xlsx` | [Divisions, groupe 2, mensuel](https://www.hcp.ma/Indice-des-prix-a-la-consommation-IPC-2017-par-divisions-Groupe-2-Mensuel_a3070.html) |
+| `Tabulation Rapport Enquête Nationale sur le Niveau de Vie des Ménages 2022-2023.xlsx` | [Tabulation ENNVM 2022–2023](https://www.hcp.ma/Rapport-des-resultats-de-l-Enquete-Nationale-sur-le-Niveau-de-Vie-des-Menages-2022-2023_a4062.html) |
 
-Les intitulés de navigation ci-dessus renvoient aux pages HCP citées dans la section précédente. Le classeur annuel détaillé « Biens & services divers » est disponible sur la page des indicateurs. Il sert à documenter des recoupements de catégories et reste facultatif pour l’exécution des scripts.
+Le classeur annuel détaillé « Biens & services divers » est disponible sur la page des indicateurs. Il sert à documenter des recoupements de catégories et reste facultatif pour l’exécution des scripts.
 
 Les fichiers IPC attendus correspondent à l’édition se terminant en octobre 2026, avec les en-têtes à la ligne 24. Les téléchargements du HCP peuvent être actualisés. Si les fichiers proposés couvrent d’autres mois ou si leurs valeurs ont été révisées, obtenir l’édition correspondante pour reproduire exactement les résultats. Un échec du contrôle du calendrier signale un fichier hors du périmètre de cette étude.
 
@@ -36,7 +36,7 @@ Les classeurs et les CSV de travail sont conservés localement. Le dépôt conse
 | `notebooks/` | Six étapes d’analyse, avec les résultats enregistrés des étapes exécutées |
 | `outputs/` et `outputs/robustesse/` | Graphiques du projet et tableaux CSV régénérés localement |
 | `app.py` et `test_simulation.py` | Tableau de bord Streamlit et tests de cohérence |
-| `report/latex/` | Rapport de 42 pages, sources LaTeX, bibliographie, tableaux et figures |
+| `report/latex/` | Rapport, sources LaTeX, bibliographie, tableaux et figures |
 
 | Notebook | Contenu |
 | --- | --- |
@@ -49,15 +49,17 @@ Les classeurs et les CSV de travail sont conservés localement. Le dépôt conse
 
 ## Reproduire les analyses
 
-Depuis la racine, sous PowerShell, avec une installation de Python accessible par `python` :
+Pour récupérer le projet et installer les dépendances sous PowerShell, avec Git et Python disponibles, exécuter les commandes suivantes.
 
 ```powershell
+git clone https://github.com/fmounach/inflation-consumer-behavior-morocco.git
+Set-Location inflation-consumer-behavior-morocco
 python -m venv .venv
 .\.venv\Scripts\python.exe -m pip install -r requirements.txt
 New-Item -ItemType Directory -Force -Path data/raw,data/processed
 ```
 
-Une fois les fichiers HCP déposés dans `data/raw/`, exécuter :
+Après avoir placé les quatre classeurs dans `data/raw/`, exécuter les scripts dans cet ordre. Le premier valide les 118 mois et produit `data/processed/ipc_maroc_mensuel.csv`. Le second utilise les colonnes de ce CSV pour valider les correspondances et écrit les tables de dépenses, de profils et de correspondance dans `data/processed/`.
 
 ```powershell
 .\.venv\Scripts\python.exe src/clean_ipc.py
@@ -65,7 +67,7 @@ Une fois les fichiers HCP déposés dans `data/raw/`, exécuter :
 .\.venv\Scripts\python.exe -m jupyterlab
 ```
 
-Exécuter les notebooks **02 à 06 dans l’ordre**. Le notebook 01 est facultatif. Pour le configurer sur la table préparée, sélectionner `data/processed/`, `ipc_maroc_mensuel.csv`, la colonne `date`, la colonne `Indice Général`, le format `%Y-%m-%d` et le séparateur `,`. Le notebook 04 génère les CSV de référence, le 05 produit les scénarios de ressources et le 06 écrit dans `outputs/robustesse/`. Les analyses utilisent les chemins du projet et peuvent démarrer depuis la racine ou depuis `notebooks/`. Une reproduction réécrit les exports correspondants. Pour garder intacts les exports déjà présents, reproduire dans une copie de travail.
+Dans JupyterLab, sélectionner le noyau Python de l’environnement `.venv`, puis exécuter toutes les cellules des notebooks **02 à 06 dans l’ordre**. Le notebook 01 est facultatif. Pour le configurer sur la table préparée, sélectionner `data/processed/`, `ipc_maroc_mensuel.csv`, la colonne `date`, la colonne `Indice Général`, le format `%Y-%m-%d` et le séparateur `,`. Le notebook 04 génère les CSV de référence, le 05 produit les scénarios de ressources et le 06 écrit dans `outputs/robustesse/`. Les analyses utilisent les chemins du projet et peuvent démarrer depuis la racine ou depuis `notebooks/`. Une reproduction réécrit les exports correspondants. Pour garder intacts les exports déjà présents, reproduire dans une copie de travail.
 
 ```powershell
 .\.venv\Scripts\python.exe -m unittest -v test_simulation
@@ -76,7 +78,7 @@ Ouvrir `http://127.0.0.1:8501`. L’application lit les CSV préparés et les ex
 
 ### Rapport LaTeX
 
-Le [rapport compilé](report/latex/main.pdf) peut être lu directement. Pour compiler les sources, installer une distribution LaTeX avec pdfLaTeX, BibTeX et les paquets usuels, dont Latin Modern, Babel français et Hyperref. Les figures nécessaires sont déjà présentes. Compléter les champs étudiant, encadrant et année universitaire dans `main.tex` si nécessaire.
+Le [rapport compilé](report/latex/main.pdf) peut être lu directement. Pour compiler les sources, installer une distribution LaTeX avec pdfLaTeX, BibTeX et les paquets usuels, dont Latin Modern, Babel français et Hyperref. Les figures nécessaires sont déjà présentes.
 
 ```powershell
 Push-Location report/latex
