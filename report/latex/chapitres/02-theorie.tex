@@ -1,0 +1,15 @@
+\chapter{Cadre théorique}
+\section{Niveau des prix, indice et inflation}
+Un indice des prix à la consommation résume l'évolution des prix d'un ensemble de biens et services. La base 100 en 2017 fixe son échelle. Une valeur de 121,8 représente 121,8 points d'indice. Le taux d'inflation se calcule en comparant deux niveaux d'indice et s'exprime en pourcentage. Une inflation positive qui ralentit signifie que le niveau des prix reste supérieur à celui de la période de comparaison, avec un écart plus faible. Une variation négative indique une baisse pour l'horizon calculé.
+
+Le HCP décrit un IPC de type Laspeyres en chaîne, avec une moyenne géométrique au premier niveau d'agrégation. Les pondérations reposent principalement sur les données de 2013--2014, complétées pour certains postes. La collecte porte sur 18 villes et le champ de référence est urbain \cite{hcpIPC,hcpNoteComplete}. Les sous-paniers du projet repondèrent des indices de divisions déjà agrégés. Leurs poids viennent de l'ENNVM 2022--2023.
+
+\section{Contrainte budgétaire et choix de consommation}
+Soit $p_k$ le prix unitaire d'un bien $k$, $q_k$ la quantité choisie et $Y$ le budget nominal consacré aux achats. L'ensemble des paniers accessibles satisfait
+\[
+  \sum_k p_kq_k \leq Y,\qquad q_k\geq 0.
+\]
+Une hausse uniforme des prix réduit les quantités accessibles à budget constant, avec des prix relatifs inchangés. Une hausse concentrée sur un poste modifie les prix relatifs et peut inciter à déplacer une partie des achats. La théorie distingue l'effet de substitution, lié aux prix relatifs, et l'effet de revenu, lié à la variation de la capacité d'achat réelle \cite{openstaxChoix}. À titre d'exemple, une hausse du prix d'un aliment peut inciter à choisir un produit moins cher. L'ampleur et la direction de la réponse totale dépendent des préférences, des possibilités de remplacement et du revenu.
+
+\section{Coût du panier et pouvoir d'achat}
+La dépense nécessaire pour acheter un panier donné $q^0$ est $E_t(q^0)=\sum_k p_{k,t}q_k^0$. Le rapport $E_t(q^0)/E_b(q^0)$ décrit un coût à quantités fixes. Un indice du coût de la vie au sens microéconomique demanderait de comparer les dépenses minimales nécessaires pour atteindre un même niveau de satisfaction aux deux dates, en autorisant la substitution. Le pouvoir d'achat d'un revenu demande par ailleurs un revenu nominal comparable et un déflateur adapté. Un IPC de base 100 permet d'exprimer un revenu nominal en prix de la période de base par $100Y_t/I_t$. Les fichiers exploités ici apportent des parts budgétaires agrégées et des indices de prix. La trajectoire du coût simulé permet d'isoler le canal des prix sous les hypothèses du modèle.

@@ -1,0 +1,81 @@
+\documentclass[11pt,a4paper]{report}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{amsmath,graphicx,array,xcolor}
+\IfFileExists{french.ldf}{\usepackage[french]{babel}}{%
+  \renewcommand{\contentsname}{Table des matières}
+  \renewcommand{\chaptername}{Chapitre}
+  \renewcommand{\appendixname}{Annexe}
+  \renewcommand{\bibname}{Références bibliographiques}
+  \renewcommand{\figurename}{Figure}
+  \renewcommand{\tablename}{Tableau}}
+\definecolor{accent}{HTML}{173C59}
+\usepackage[colorlinks=true,linkcolor=accent,citecolor=accent,urlcolor=accent]{hyperref}
+\setlength{\textwidth}{157mm}
+\setlength{\oddsidemargin}{1.1mm}
+\setlength{\evensidemargin}{1.1mm}
+\setlength{\textheight}{230mm}
+\setlength{\topmargin}{-10mm}
+\setlength{\parskip}{0.25em}
+\setlength{\parindent}{1em}
+\setcounter{tocdepth}{1}
+\makeatletter
+\renewcommand{\@makechapterhead}[1]{%
+  \vspace*{20pt}%
+  {\parindent\z@\raggedright\normalfont
+   \ifnum\c@secnumdepth>\m@ne
+     \large\bfseries\color{accent}\@chapapp\space\thechapter\par\nobreak
+     \vskip 8pt
+   \fi
+   \interlinepenalty\@M\huge\bfseries #1\par\nobreak\vskip 20pt}}
+\renewcommand{\@makeschapterhead}[1]{%
+  \vspace*{20pt}%
+  {\parindent\z@\raggedright\normalfont\interlinepenalty\@M
+    \huge\bfseries #1\par\nobreak\vskip 20pt}}
+\makeatother
+
+\graphicspath{{figures/}}
+\newcommand{\nomEtudiant}{[Nom et prénom à compléter]}
+\newcommand{\nomEncadrant}{[Nom et prénom à compléter]}
+\newcommand{\anneeUniversitaire}{[Année universitaire à compléter]}
+\newcommand{\sourcetable}[1]{\par\smallskip{\footnotesize\emph{Source :} #1\par}}
+\newcommand{\figureprojet}[3]{%
+  \begin{figure}[!htbp]
+  \centering\includegraphics[width=\linewidth,height=.70\textheight,keepaspectratio]{#1}
+  \caption{#2}\label{#3}
+  \end{figure}}
+\hypersetup{pdftitle={Inflation \& Consumer Behavior Analysis - Morocco}}
+
+\begin{document}
+\hypersetup{pageanchor=false}
+\input{chapitres/00-garde}
+\hypersetup{pageanchor=true}
+\pagenumbering{roman}
+\chapter*{Résumé}
+\addcontentsline{toc}{chapter}{Résumé}
+Ce rapport étudie l'évolution des prix au Maroc et l'exposition de différents profils budgétaires à ces variations. Il combine 118 observations mensuelles de l'indice des prix à la consommation (IPC) du Haut-Commissariat au Plan, de janvier 2017 à octobre 2026, et 18 profils agrégés de dépenses de l'Enquête nationale sur le niveau de vie des ménages 2022--2023. L'IPC général atteint un pic de variation mensuelle de 1,79\,\% en mars 2022 et un pic en glissement annuel de 10,08\,\% en février 2023. Pour l'ensemble national, le coût simulé à quantités fixes augmente entre septembre 2022 et octobre 2026 de 9,22\,\% dans le sous-panier prudent et de 7,85\,\% dans le sous-panier élargi. Ces périmètres couvrent respectivement 41,4\,\% et 93,2\,\% du budget publié. Les simulations hypothétiques montrent comment la couverture budgétaire et la part des aliments déterminent le supplément à financer à quantités constantes. Pour l'ensemble national, sous l'hypothèse d'une hausse nominale de 5\,\%, le nombre d'unités accessibles en octobre 2026 diminue par rapport à septembre 2022 de 3,86\,\% dans le prudent et de 2,64\,\% dans l'élargi. Les profils ruraux sont soumis aux mêmes séries de prix à collecte urbaine que les autres profils. L'analyse estime une exposition conditionnelle aux prix. La mesure des changements de consommation et du pouvoir d'achat effectif exigerait des données complémentaires.
+
+\noindent\textbf{Mots-clés :} Maroc, IPC, ENNVM, budget des ménages, panier fixe, prix alimentaires.
+\tableofcontents
+\clearpage
+\pagenumbering{arabic}
+\input{chapitres/01-introduction}
+\input{chapitres/02-theorie}
+\input{chapitres/03-donnees}
+\input{chapitres/04-statistiques}
+\input{chapitres/05-modele}
+\input{chapitres/06-resultats}
+\input{chapitres/07-discussion}
+\clearpage
+\input{chapitres/07-robustesse}
+\input{chapitres/08-conclusion}
+\appendix
+\input{chapitres/09-annexes}
+\clearpage
+\phantomsection
+\addcontentsline{toc}{chapter}{Références bibliographiques}
+\renewcommand{\bibname}{Références bibliographiques}
+\bibliographystyle{plain}
+\bibliography{references}
+\end{document}

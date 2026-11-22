@@ -1,0 +1,46 @@
+\section{Analyse de robustesse et sensibilité des résultats}
+\label{sec:robustesse}
+Le notebook 06 compare les 18 profils agrégés de l'ENNVM dans les périmètres prudent et élargi. Il fait varier le mois de référence et la composition du sous-panier. La couverture initiale est conservée pour chaque profil. Elle varie de 34,6 à 55,9\,\% dans le prudent et de 89,5 à 98,3\,\% dans l'élargi.
+
+\subsection{Redistribution proportionnelle des pondérations}
+
+Soit $w_k$ le poids du poste $k$ en pourcentage du sous-panier, après renormalisation des coefficients publiés. La variante initiale conserve ces poids. Les deux variantes hypothétiques modifient le poids du groupe 01, aliments et boissons non alcoolisées, de $\delta=-5$ ou $\delta=+5$ points de pourcentage. Pour répartir le complément, on conserve les proportions entre tous les autres postes :
+\[
+ w'_1=w_1+\delta,\qquad
+ w'_k=w_k\,\frac{100-w'_1}{100-w_1}\quad(k\ne1).
+\]
+Comme $\sum_{k\ne 1}w_k=100-w_1$, on obtient
+\[
+ \sum_k w'_k=w'_1+\frac{100-w'_1}{100-w_1}(100-w_1)=100 .
+\]
+Les poids sont strictement positifs dans les variantes testées. Cette opération modifie la composition du sous-panier et conserve sa couverture et ses catégories. Elle représente une hypothèse de sensibilité, sans estimation de substitutions ni nouvelle observation de dépenses.
+
+\subsection{Sensibilité historique et horizons de comparaison}
+
+Pour un mois de référence $b$, le coût relatif du sous-panier au mois $t$ vaut
+\[
+ 100\sum_k \frac{w'_k}{100}\frac{I_{k,t}}{I_{k,b}}.
+\]
+Chaque référence applique de nouveau les poids à son propre point de départ. Il s'agit d'une nouvelle comparaison à poids fixes pour chaque fenêtre. La variation cumulée, en pourcentage, est l'indice obtenu diminué de 100.
+
+Le tableau \ref{tab:robustesse-histoire} et la figure \ref{fig:robustesse-histoire} comparent deux familles de fenêtres. Les trois fenêtres de douze mois ont la même durée et traversent des périodes calendaires différentes. Elles testent la sensibilité au choix de la période. Les fenêtres se terminant toutes en octobre 2026 durent 49, 45 ou 34 mois. Leurs variations cumulées décrivent des durées différentes et ne peuvent donc pas être lues comme une comparaison directe de rythmes. Pour l'ensemble national, avec les poids initiaux, le prudent augmente davantage que l'élargi dans les deux premières fenêtres de douze mois. L'ordre s'inverse de décembre 2023 à décembre 2024, avec +0,73\,\% dans le prudent et +1,34\,\% dans l'élargi. Sur cette dernière fenêtre, donner cinq points supplémentaires à l'alimentation abaisse les taux à +0,70\,\% et +1,28\,\%, respectivement.
+\input{tableaux/robustesse-historique}
+\figureprojet{sensibilite_historique.png}{Sensibilité historique pour l'ensemble national. Les points correspondent aux poids initiaux et les segments à l'étendue des variantes alimentaires. Les fenêtres de durée différente figurent dans un panneau distinct. Source : notebook 06.}{fig:robustesse-histoire}
+\clearpage
+
+\subsection{Rural C1 et Urbain C5 face au choc alimentaire}
+
+Le choc uniforme augmente de 5\,\% le prix de chaque poste couvert. Le choc combiné augmente ensuite de 10\,\% le prix alimentaire déjà majoré, soit une hausse totale de 15,5\,\% pour ce poste. Le supplément alimentaire marginal est la différence entre les montants du choc combiné et du choc uniforme. Sur le budget illustratif de 5\,000 MAD, il vaut 10,5\,\% du coût initial du poste alimentaire. Le tableau \ref{tab:robustesse-choc} distingue ce montant de la variation du coût de tout le sous-panier.
+
+Avec les coefficients publiés, la part alimentaire du budget total est de 50,2\,\% pour Rural C1 et de 24,6\,\% pour Urbain C5. Le supplément marginal correspondant est de 263,55 MAD contre 129,15 MAD dans les deux périmètres, soit un écart de 134,40 MAD pour le même budget illustratif. Il est identique entre les périmètres avec les poids initiaux parce que le coefficient du groupe 01 dans le budget total est alors le même. Sous les variantes, le poids modifié est défini à l'intérieur du sous-panier et sa conversion en part du budget total dépend de la couverture. La figure \ref{fig:robustesse-choc} illustre cette sensibilité.
+\input{tableaux/robustesse-choc}
+\figureprojet{choc_alimentaire_rural_urbain.png}{Supplément alimentaire marginal pour Rural C1 et Urbain C5, sur un budget hypothétique de 5\,000 MAD. Source : notebook 06.}{fig:robustesse-choc}
+\clearpage
+
+\subsection{Résultats robustes, résultats sensibles et limites}
+
+\textbf{Résultats robustes dans les variantes testées.} La hausse uniforme de 5\,\% augmente de 5\,\% le coût de chaque sous-panier. Le supplément alimentaire marginal est plus élevé pour Rural C1 que pour Urbain C5 dans les deux périmètres, y compris lorsque la variante la plus basse pour Rural C1 est comparée à la plus haute pour Urbain C5 au sein du même périmètre.
+
+\textbf{Résultats sensibles.} Le classement historique des périmètres varie selon la fenêtre. Dans l'élargi, la hausse du coût de Rural C1 sous le choc combiné va de 9,84 à 10,89\,\% selon la pondération, contre 10,36\,\% avec les poids initiaux. Le franchissement d'un repère de 10\,\% dépend donc de la variante.
+
+\textbf{Limites.} Les résultats sont conditionnels aux dates, à l'amplitude des variantes et aux catégories retenues. Les prix à collecte urbaine restent communs aux profils ruraux et urbains \cite{hcpIPC}. Les catégories partielles de l'élargi restent des approximations. Les quintiles sont définis par les dépenses au sein de chaque milieu et les montants en MAD reposent sur un budget illustratif identique. En l'absence de trajectoires de revenus et de quantités achetées, ces comparaisons portent sur le coût des postes couverts à composition fixe. Elles ne mesurent ni des comportements de substitution ni le pouvoir d'achat effectif.

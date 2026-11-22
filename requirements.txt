@@ -1,0 +1,7 @@
+pandas
+numpy
+matplotlib
+jupyterlab
+ipykernel
+openpyxl
+streamlit>=1.51,<2

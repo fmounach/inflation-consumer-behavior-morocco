@@ -1,0 +1,64 @@
+# Python et environnements
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+env/
+.python-version
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+build/
+dist/
+*.egg-info/
+
+# Jupyter et éditeurs
+.ipynb_checkpoints/
+.vscode/
+.idea/
+*.code-workspace
+
+# Configuration privée et identifiants
+.env
+.env.*
+!.env.example
+.streamlit/
+*.pem
+*.key
+*.pfx
+*.p12
+
+# Données HCP et tables régénérées
+/data/raw/
+/data/processed/
+/outputs/**/*.csv
+*.xlsx
+*.xls
+*.exe
+
+# LaTeX et artefacts MiKTeX
+/report/latex/**/*.aux
+/report/latex/**/*.bbl
+/report/latex/**/*.bcf
+/report/latex/**/*.blg
+/report/latex/**/*.fdb_latexmk
+/report/latex/**/*.fls
+/report/latex/**/*.log
+/report/latex/**/*.lof
+/report/latex/**/*.lot
+/report/latex/**/*.out
+/report/latex/**/*.run.xml
+/report/latex/**/*.synctex*
+/report/latex/**/*.toc
+/report/latex/**/*.xdv
+
+# Fichiers système, journaux et temporaires
+.DS_Store
+Thumbs.db
+*.tmp
+*.bak
+*.swp
+*.log
+~$*

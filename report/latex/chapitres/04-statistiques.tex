@@ -1,0 +1,24 @@
+\chapter{Analyse descriptive de l'inflation}
+\section{Indicateurs et statistiques}
+Si $I_t$ désigne le niveau de l'IPC au mois $t$, la variation mensuelle et le glissement annuel sont respectivement
+\[
+  \pi_t^{(1)}=100\left(\frac{I_t}{I_{t-1}}-1\right),
+  \qquad
+  \pi_t^{(12)}=100\left(\frac{I_t}{I_{t-12}}-1\right).
+\]
+Les premières dates restent vides lorsque le mois de comparaison précède janvier 2017. Le taux d'inflation moyen annuel d'une année civile complète $a$ vaut $100(\overline I_a/\overline I_{a-1}-1)$, où $\overline I_a$ est la moyenne de ses douze niveaux mensuels. Le glissement de décembre compare uniquement deux mois de décembre. La moyenne des glissements mensuels sur douze mois constitue encore un autre résumé.
+
+Les statistiques du tableau \ref{tab:descriptif} sont calculées sur les observations disponibles. La variance corrigée est $s^2=\sum_i(x_i-\bar x)^2/(n-1)$ et l'écart-type vaut $\sqrt{s^2}$. Ces mesures décrivent la période étudiée. Elles ne constituent pas une estimation d'incertitude sur les profils.
+\input{tableaux/descriptif}
+\input{tableaux/annuel}
+
+\section{Évolution générale et pics}
+L'IPC général passe de 99,40 en janvier 2017 à 121,80 en octobre 2026. La plus forte hausse mensuelle est de 1,79\,\% en mars 2022. Le glissement annuel culmine à 10,08\,\% en février 2023, avec un taux déjà élevé en janvier 2023 (8,91\,\%). Les taux moyens des années civiles 2022 et 2023 atteignent respectivement 6,66\,\% et 6,09\,\%. Sur janvier--octobre 2026, l'IPC général moyen dépasse celui de janvier--octobre 2025 de 0,43\,\%. L'année 2026 est incomplète dans le fichier.
+\figureprojet{02_ipc_general.png}{IPC général du Maroc, base 100 en 2017. Source : HCP, séries mensuelles.}{fig:ipc}
+\figureprojet{02_inflation_generale.png}{Variations mensuelles et glissements annuels de l'IPC général. Calculs du projet à partir du HCP.}{fig:taux}
+
+\section{Comparaison des postes}
+Au pic de février 2023, le glissement de l'agrégat alimentaire atteint 20,08\,\%, contre 3,58\,\% pour les produits non alimentaires. L'écart est de 16,49 points, calculé avant arrondi. Parmi les douze divisions, la moyenne des glissements disponibles de janvier 2018 à octobre 2026 varie de 0,18\,\% pour la santé à 4,68\,\% pour les boissons alcoolisées, tabac et stupéfiants. Cette moyenne compare le rythme des prix entre divisions. Leur contribution à l'IPC général dépend également de leurs poids.
+\figureprojet{02_alimentation_non_alimentaire.png}{Agrégats alimentaire et non alimentaire. Les niveaux et les glissements annuels sont représentés sur deux axes distincts.}{fig:alim}
+\figureprojet{02_inflation_divisions.png}{Moyenne des glissements annuels disponibles par division, de janvier 2018 à octobre 2026.}{fig:divisions}
+\clearpage

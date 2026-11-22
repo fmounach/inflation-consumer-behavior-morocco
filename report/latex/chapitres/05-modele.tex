@@ -1,0 +1,30 @@
+\chapter{Correspondances et modèle à pondérations fixes}
+\section{Périmètres et couverture}
+La correspondance confronte les sous-groupes de l'ENNVM aux groupes et classes de l'IPC détaillés par le HCP \cite{hcpIPC,hcpAgadir}. Le rapport régional d'Agadir étaye la lecture des catégories. Les séries utilisées pour les calculs restent les séries nationales du CSV, collectées en milieu urbain. L'annexe \ref{ann:correspondance} documente les quatorze rapprochements. Le périmètre prudent retient 01, 03, 05 et 10. Le périmètre élargi ajoute les huit correspondances partielles, soit les groupes 01 à 11 et 13. Les groupes 12 (assurances et services financiers) et 14 (paiements fiscaux, transferts et remboursements) restent hors des deux périmètres. Le premier manque d'une série autonome adéquate. Pour le second, les flux recensés ne correspondent pas tous à un prix de consommation.
+
+La couverture des 18 profils apparaît au tableau \ref{tab:profils}. L'ensemble rural consacre 45,0\,\% du budget aux aliments et boissons non alcoolisées, contre 30,1\,\% pour l'ensemble urbain. La part du groupe 01 va de 50,2\,\% pour C1 rural à 24,6\,\% pour C5 urbain. Ces différences décrivent les budgets agrégés et éclairent le mécanisme du choc alimentaire.
+\input{tableaux/profils}
+
+\section{Coût historique du sous-panier}
+Pour un profil $p$, un groupe $k$ et un ensemble de postes $S$, le coefficient publié $CB_{p,k}$ est exprimé en pourcentage du budget total. Les poids renormalisés et l'indice de coût du sous-panier sont définis par
+\[
+ C_p^S=\sum_{k\in S}CB_{p,k},\qquad w_{p,k}^S=\frac{CB_{p,k}}{C_p^S},\qquad
+ P_{p,t}^S=100\sum_{k\in S}w_{p,k}^S\frac{I_{k,t}}{I_{k,b}} .
+\]
+Les poids $w_{p,k}^S$ totalisent 1. Par exemple, le groupe 01 représente 33,4\,\% du budget de l'ensemble national, soit 80,7\,\% du sous-panier prudent et 35,8\,\% du sous-panier élargi. Le mois de référence $b$ est septembre 2022, proche du milieu de la collecte. Ce repère fixe la valeur initiale à 100. Les coefficients décrivent l'ensemble de l'enquête et leur emploi à toute autre date implique un panier de composition constante.
+
+La variation depuis la référence est $P_{p,t}^S-100$, en pourcentage du coût initial du sous-panier. Sa contribution au budget total initial, en points, est
+\[
+ A_{p,t}^S=\frac{C_p^S}{100}(P_{p,t}^S-100)
+     =\sum_{k\in S}CB_{p,k}\left(\frac{I_{k,t}}{I_{k,b}}-1\right).
+\]
+Les variations à un et douze mois comparent $P_{p,t}^S$ à $P_{p,t-h}^S$. La contribution n'est calculée ici que depuis la référence. Pour un autre horizon, la part du sous-panier au début de l'intervalle pourrait différer.
+
+\section{Chocs hypothétiques}
+Avec un choc de prix $\delta_k$ en fraction et un budget initial hypothétique $B=5\,000$ MAD, la contribution, le taux du sous-panier et le supplément s'écrivent
+\[
+ A_p^S=\sum_{k\in S}CB_{p,k}\delta_k,\qquad
+ \Delta_p^S=100\frac{A_p^S}{C_p^S},\qquad
+ M_p^S=B\frac{A_p^S}{100}.
+\]
+Le choc uniforme fixe chaque $\delta_k$ à 0,05. Dans le choc combiné, le groupe 01 augmente ensuite de 10\,\% sur son prix déjà majoré, soit $(1{,}05)(1{,}10)-1=0{,}155$. Les autres postes restent à +5\,\%. La composante alimentaire supplémentaire vaut donc 10,5 points du prix alimentaire initial. Seuls les postes couverts contribuent au supplément. L'illustration suppose le même budget de départ pour tous les profils.

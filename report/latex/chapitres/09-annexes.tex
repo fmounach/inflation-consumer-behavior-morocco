@@ -1,0 +1,28 @@
+\chapter{Correspondance détaillée des catégories}\label{ann:correspondance}
+Les statuts « fiable », « partielle » et « absente » caractérisent la correspondance à l'échelle de la division mensuelle. Le statut « fiable » reprend la catégorie \texttt{proche} du CSV d'audit. L'exclusion du groupe 14 répond en plus à sa nature économique. Les prix associés aux groupes partiels servent uniquement au scénario élargi.
+\input{tableaux/correspondance}
+
+\chapter{Inventaire et contrôles de reproductibilité}\label{ann:trace}
+\begin{description}\raggedright
+\item[Données de prix.] Trois classeurs mensuels du HCP, base 100 en 2017, puis \path{ipc_maroc_mensuel.csv} (118 mois, 15 séries et une date). Le classeur annuel de détail des services divers documente certaines classes.
+\item[Données de dépenses.] Classeur de tabulation ENNVM 2022--2023.
+\par \path{depenses_menages_2022_2023.csv} (252 couples profil--poste) et \path{profils_budgetaires_2022_2023.csv} (18 profils).
+\item[Correspondance.] Audit des 14 groupes dans \path{correspondance_depenses_ipc.csv}. Le notebook 03 contient le rapport de préparation, les couvertures et la définition de \texttt{simuler\_panier}.
+\item[Analyse de l'IPC.] Le notebook 02 fournit les statistiques et quatre graphiques préfixés \texttt{02\_}. Le notebook 01 conserve la trame exploratoire, sans résultats exécutés.
+\item[Simulations.] \path{04_cout_panier_historique.csv} contient 4\,248 lignes (118 mois, 18 profils, deux périmètres). \path{04_chocs_hypothetiques.csv} contient 72 lignes (deux chocs pour chaque couple profil--périmètre). \path{04_ponderations_sous_paniers.csv} contient 288 poids (18 profils, quatre postes prudents et douze élargis). Deux graphiques du notebook 04 complètent ces tableaux.
+\item[Scénarios de ressources.] Le notebook 05 croise les coûts du notebook 04 avec quatre taux nominaux hypothétiques. Les fichiers \path{05_pouvoir_achat_historique.csv} (16\,992 lignes) et \path{05_pouvoir_achat_chocs.csv} (288 lignes) conservent la couverture et le seuil de maintien.
+\end{description}
+
+Les contrôles du notebook 04 portent sur les clés, la complétude du calendrier, les valeurs finies, la conservation des poids sources, la normalisation à 100 en septembre 2022, et la concordance entre contribution directe et contribution obtenue via la couverture. Le choc uniforme produit exactement 5\,\% à la précision du calcul. Le supplément alimentaire marginal est identique entre périmètres pour un profil donné. Les taux historiques ont été confrontés à \texttt{simuler\_panier}. Les montants affichés dans le rapport sont arrondis après calcul.
+
+\clearpage
+\chapter{Tableaux complets des chocs hypothétiques}
+Les colonnes de contribution donnent des points du budget initial. Les montants illustrent un même budget de 5\,000 MAD pour chaque profil. « Combiné » correspond à +5\,\% sur tous les postes couverts, puis +10\,\% supplémentaires sur le groupe 01.
+\input{tableaux/chocs-prudent-annexe}
+\input{tableaux/chocs-elargi-annexe}
+
+\clearpage
+\chapter{Pouvoir d'achat après le choc combiné}\label{ann:pa-chocs}
+Le tableau de chaque périmètre présente les quatre hypothèses nominales et le seuil de maintien. Le groupe alimentaire subit une hausse totale de 15,5\,\% et les autres postes couverts de 5\,\%.
+\input{tableaux/pa-chocs-prudent}
+\input{tableaux/pa-chocs-elargi}
